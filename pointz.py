@@ -7,4 +7,3 @@ maek_big = 0
 
 pointz.write(f"Score: {maek_big}")
 pointz.setpos(0, 200)
-

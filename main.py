@@ -1,5 +1,7 @@
-from turtle import Turtle, Screen, colormode
+from turtle import Screen, colormode, Turtle
+from food import Food
 from snek import Snek
+from bord import Bord
 import random
 import time
 
@@ -11,16 +13,29 @@ screen.tracer(0)
 colormode(255)
 
 snek = Snek()
+food = Food()
+bord = Bord()
+
+
+
 
 def plae_gaem():
     screen.resetscreen()
     snek.__init__()
+    food.__init__()
+    bord.__init__()
+
+
     game = True
     while game:
-        print(snek.snek[0].pos())
-        snek.snek_move()
         screen.update()
         time.sleep(0.1)
+        snek.snek_move()
+
+        if snek.hed.distance(food) < 15:
+            food.spawn(snek.snek)
+            bord.score += 1
+
         if abs(snek.snek[0].xcor()) >= 281 or abs(snek.snek[0].ycor()) >= 281:
             game = False
 
