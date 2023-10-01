@@ -2,12 +2,18 @@ from turtle import Turtle
 
 START_POS = [(0, 0), (-20, 0), (-40, 0)]
 MOVE_DIST = 20
+RIGHT = 0
+LEFT = 180
+UP = 90
+DOWN = 270
+
 
 class Snek:
 
     def __init__(self):
         self.snek = []
         self.maek_snek()
+        self.hed = self.snek[0]
 
     def maek_snek(self):
         for pos in START_POS:
@@ -21,16 +27,20 @@ class Snek:
         for seg_num in reversed(range(len(self.snek))):
             if seg_num > 0:
                 self.snek[seg_num].goto(self.snek[seg_num - 1].pos())
-        self.snek[0].fd(MOVE_DIST)
+        self.hed.fd(MOVE_DIST)
 
     def snek_right(self):
-        self.snek[0].seth(0)
+        if self.hed.heading() != LEFT:
+            self.hed.seth(RIGHT)
 
     def snek_left(self):
-        self.snek[0].seth(180)
+        if self.hed.heading() != RIGHT:
+            self.hed.seth(LEFT)
 
     def snek_up(self):
-        self.snek[0].seth(90)
+        if self.hed.heading() != DOWN:
+            self.hed.seth(UP)
 
     def snek_down(self):
-        self.snek[0].seth(270)
+        if self.hed.heading() != UP:
+            self.hed.seth(DOWN)
