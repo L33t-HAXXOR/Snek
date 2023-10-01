@@ -34,7 +34,7 @@ def plae_gaem():
 
         if snek.hed.distance(food) < 15:
             food.spawn(snek.snek)
-            bord.score += 1
+            bord.moar_pointz()
 
         if abs(snek.snek[0].xcor()) >= 281 or abs(snek.snek[0].ycor()) >= 281:
             game = False
