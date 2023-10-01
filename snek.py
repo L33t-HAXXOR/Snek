@@ -15,13 +15,22 @@ class Snek:
         self.maek_snek()
         self.hed = self.snek[0]
 
+
     def maek_snek(self):
         for pos in START_POS:
-            tort = Turtle(shape="square")
-            tort.color("white")
-            tort.up()
-            tort.goto(pos)
-            self.snek.append(tort)
+            self.add_tort(pos)
+
+
+    def add_tort(self, pos):
+        tort = Turtle(shape="square")
+        tort.color("white")
+        tort.up()
+        tort.goto(pos)
+        self.snek.append(tort)
+
+
+    def maek_longe(self):
+        self.add_tort(self.snek[-1].pos())
 
     def snek_move(self):
         for seg_num in reversed(range(len(self.snek))):
@@ -29,17 +38,21 @@ class Snek:
                 self.snek[seg_num].goto(self.snek[seg_num - 1].pos())
         self.hed.fd(MOVE_DIST)
 
+
     def snek_right(self):
         if self.hed.heading() != LEFT:
             self.hed.seth(RIGHT)
+
 
     def snek_left(self):
         if self.hed.heading() != RIGHT:
             self.hed.seth(LEFT)
 
+
     def snek_up(self):
         if self.hed.heading() != DOWN:
             self.hed.seth(UP)
+
 
     def snek_down(self):
         if self.hed.heading() != UP:
