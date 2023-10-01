@@ -1,4 +1,4 @@
-from turtle import Turtle
+from turtle import Turtle, Screen
 
 START_POS = [(0, 0), (-20, 0), (-40, 0)]
 MOVE_DIST = 20
@@ -14,7 +14,7 @@ class Snek:
         self.snek = []
         self.maek_snek()
         self.hed = self.snek[0]
-
+        self.screen = Screen()
 
     def maek_snek(self):
         for pos in START_POS:
@@ -40,20 +40,24 @@ class Snek:
 
 
     def snek_right(self):
+        self.screen.update()
         if self.hed.heading() != LEFT:
             self.hed.seth(RIGHT)
 
 
     def snek_left(self):
+        self.screen.update()
         if self.hed.heading() != RIGHT:
             self.hed.seth(LEFT)
 
 
     def snek_up(self):
+        self.screen.update()
         if self.hed.heading() != DOWN:
             self.hed.seth(UP)
 
 
     def snek_down(self):
+        self.screen.update()
         if self.hed.heading() != UP:
             self.hed.seth(DOWN)

@@ -27,7 +27,6 @@ def plae_gaem():
     food.__init__()
     bord.__init__()
 
-
     game = True
     while game:
         screen.update()
@@ -43,11 +42,10 @@ def plae_gaem():
             bord.u_ded()
             game = False
 
-        for block in snek.snek:
-            if snek.hed.distance(block) < 15:
-                if snek.snek.index(block) > 0:
-                    bord.u_ded()
-                    game = False
+        for block in snek.snek[1:]:
+            if snek.hed.distance(block) < 10:
+                bord.u_ded()
+                game = False
 
 rng = random.randint(0, 255)
 
@@ -66,3 +64,5 @@ plae_gaem()
 
 
 screen.exitonclick()
+
+# TODO 1. Fix Bug where snake can about face and pass over itself resulting in death
